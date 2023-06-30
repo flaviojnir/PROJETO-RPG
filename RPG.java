@@ -1,48 +1,43 @@
 import java.util.Scanner;
 
 public class RPG {
-    public static void main(String[] args) {
+
+    private static void criacao_personagem(){ //metodo para criar o personagem do jogador
         try (Scanner input = new Scanner(System.in)) {
-            String anao;
-            String altanao;
-            String elfo;
-            String elfoaltura;
+            String nome;
+            float altura;
 
             System.out.println(
                     "Bem-vindo a sua nova aventura, aventureiro. Conclua sua inscricao para que possamos comecar a aventura");
             System.out.println(
                     "Escolha sua raca: \n1 - Anao\n2 - Elfo\n3 - Halfling\n4 - Humano\n5 - Draconato\n6 - Gnomo");
             int n1 = input.nextInt();
-            if (n1 == 1) {
-                anao an = new anao(null, n1, null, n1);
-                anao = an.getNome();
-                altanao = an.getAltura();
 
-                System.out.println("Qual sera seu nome?");
-                anao = input.nextLine();
+            switch(n1){ //switch para determinar raca
+                case 1:
+                    anao an = new anao(null, n1, null, n1);
+                    break;
 
-                System.out.println("Qual sera sua altura?");
-                altanao = input.nextLine();
+                case 2:
+                    elfo ef = new elfo(null, n1, null);
+                    break;
 
-                System.out.println("Seja Bem-vindo, " + anao + " voce mede " + altanao + " seus bonus de anao sao: ");
-
+                default:
+                    System.out.println("Ainda nao feito / invalido");
             }
+            //apos determinar raca, coleta nome e altura
+            input.nextLine();
+            System.out.println("Qual sera seu nome?");
+            nome = input.nextLine();
+            System.out.println("Qual sera sua altura?");
+            altura = input.nextFloat();
 
-            if (n1 == 2) {
-                elfo ef = new elfo(null, n1, null);
-                elfo = ef.getNome();
-                elfoaltura = ef.getAltura();
-
-                System.out.println("Qual sera seu nome?");
-                elfo = input.nextLine();
-
-                System.out.println("Qual sera sua altura?");
-                elfoaltura = input.nextLine();
-
-                System.out
-                        .println("Seja Bem-vindo, " + elfo + " voce mede " + elfoaltura + " seus bonus de anao sao: ");
-            }
-
+            System.out.printf("Seja Bem-vindo,%s. Voce mede %.2f de altura. \n",nome,altura);
+            input.close();
         }
+    }
+
+    public static void main(String[] args) {
+        criacao_personagem();
     }
 }
