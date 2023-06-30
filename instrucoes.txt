@@ -1,0 +1,68 @@
+Proposta 4: Projeto de RPG
+- O projeto deve ser desenvolvido em Console;
+- O jogo a ser desenvolvido é um RPG em modo texto. Ao longo do gameplay devem
+ser disponibilizadas opções ao jogador, por exemplo; Você está na cidade de Bree.
+O que deseja fazer:
+1 – Visitar a taverna
+2 – Descansar no INN
+3 – Ir ao ferreiro
+4 – Voltar para a estrada
+- O jogo deve ser dividido essencialmente em dois modos: dentro e fora de
+batalha; - Fora da batalha: o grupo pode definir os contextos que o jogo apresentará,
+porém, são obrigatórios: INN (recuperar vida), loja (comprar itens, armas, poções, etc),
+taverna (focado em quests), cidades, campos abertos e cavernas;
+- O jogo deve possuir, no mínimo: 3 cidades (cada uma com INNs, lojas e
+tavernas), 5 campos abertos e 2 cavernas;
+- A estrutura destes cenários deve ocorrer com herança de classes, por
+exemplo: existe uma classe cenário que serve como base para as classes caverna,
+campo e cidade. O grupo deve escolher a melhor estratégia de estruturação,
+considerando virtualização e abstração;
+- INNs: devem estar disponíveis nas cidades e, se for do desejo do grupo, em
+outros contextos. Neste local os personagens poderão recuperar vida por um custo
+determinado;
+- Lojas: devem apresentar itens disponíveis ao jogador. Devem existir no mínimo
+3 categorias de itens: poções, armas e armaduras. O mínimo de cada categoria
+existente no jogo deve ser: 5 poções, 20 armas diferentes e 20 tipos de armaduras
+diferentes;
+- Os itens existentes devem ser lidos de um arquivo de texto chamado itens.txt,
+sendo possível adicionar itens apenas editando o arquivo;
+- Tavernas: enfoque em iniciar quests. O jogo deve possuir, no mínimo, 5 quests
+– que devem envolver: batalhas em cavernas, campos abertos e visitas em outras
+cidades; - Campos abertos: locais de transição entre as cidades, onde ocorrerão
+batalhas; - Cavernas: locais repletos de inimigos em que ocorrerão batalhas e buscas
+por tesouros;
+- O jogo deve suportar um grupo de 4 personagens. Durante a batalha, todos
+devem participar;
+- O modo batalha do jogo deve ocorrer em turnos, tendo, no mínimo, 4 ações:
+ataque, defesa, especial, fugir;
+- O jogo deve apresentar, no mínimo, 20 inimigos diferentes, que devem ser
+lidos de um arquivo de texto chamado monstros.txt, sendo possível adicionar
+monstros apenas editando o arquivo;
+- O jogo deve apresentar 5 classes diferentes para os personagens: ex.: mago,
+paladino, bárbaro, necromante, etc. Cada classe deve possuir, no mínimo, 3 ataques
+especiais diferentes. As informações das classes devem estar em um arquivo
+chamado classes.txt, sendo possível adicionar golpes especiais apenas editando o
+arquivo;
+- Os personagens podem possuir quantos atributos o grupo desejar, sendo
+alguns obrigatórios: nome, vida, mana, ataque, defesa, velocidade, dinheiro e xp; -
+Deve ser possível utilizar poções durante a batalha e, se for projetado pelo grupo,
+outros tipos de itens;
+
+- Cada personagem deve poder equipar armas e armaduras, refletindo em
+bônus nos atributos. O jogo deve possuir um sistema de inventário para armazenar
+itens e equipamentos;
+- A estrutura das classes de personagens deve ocorrer com herança de classes.
+O grupo deve escolher a melhor estratégia de estruturação, considerando
+virtualização e abstração;
+- O grupo deve elaborar um roteiro de jogo contemplando as quests estipuladas,
+cidades, etc;
+- Todos os diálogos, descrições de quests e quaisquer descrições textuais do
+jogo devem ser carregados de um arquivo chamado textos.txt;
+- O jogo deve possuir um sistema de save dentro dos INNs, podendo ser
+carregado a partir da tela inicial. As informações de save devem estar no arquivo
+save.txt e devem ser criptografadas (ver referências na documentação oficial da
+Microsoft); - Uma classe exclusiva de leitura do arquivo deve ser implementada. Ela
+deve fazer um parse de strings e atribuir os valores lidos nas variáveis coerentes;
+- Estarão sendo avaliados os conceitos de orientação a objetos trabalhados ao
+longo do semestre, como a correta estruturação de classes, nome de atributos,
+métodos, indentação, nível de acesso e encapsulamento;
