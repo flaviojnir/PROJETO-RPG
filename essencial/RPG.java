@@ -1,5 +1,7 @@
 package essencial;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
 import estruturas.*;
 import lugares.*;
 
@@ -36,5 +38,13 @@ public class RPG {
 
     public static void main(String[] args) {
         criacao_personagem();
+        
+        ArrayList<Object> mapa = new ArrayList<>();
+        cidade viamao = new cidade();
+        mapa.add(viamao);
+        caverna cv1 = new caverna();
+        mapa.add(cv1);
+        campo camp1 = new campo();
+        mapa.add(camp1);
     }
 }
