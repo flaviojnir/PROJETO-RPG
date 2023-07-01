@@ -32,15 +32,15 @@ public class RPG {
             jogador player = new jogador(nome,idade,altura,escolha_raca);
 
             System.out.printf("Seja Bem-vindo,%s. Voce mede %.2f de altura. \nTem %d anos.\n",nome,altura,idade);
+            System.out.println("--------------------------");
         
     }
 
     private static int selecionar_cenario(){ //selecionar cidade/caverna/campo aberto
-            //x.nextLine();
             System.out.println("Para onde voce quer ir?");
             System.out.println("1 - Cidade\n2 - Floresta\n3 - Caverna");
-            //x.nextLine();
             int selecao = input.nextInt();
+            System.out.println("--------------------------");
             return selecao;
         }
 
@@ -50,12 +50,11 @@ public class RPG {
          * Game status:
          * 0 - criacao de personagem
          * 1 - selecao de cenario
-         * 2 - em cidade / campo aberto / caverna
-         * 3 - em luta
-         * 4 - sair do jogo (salva progresso)
+         * 2 - em luta
+         * 3 - sair do jogo (salva progresso)
          */
         
-        while(game_status != 4){
+        while(game_status != 3){
             switch(game_status){
             case 0:
                 criacao_personagem();
@@ -71,9 +70,25 @@ public class RPG {
                 break;
 
             case 1:
-                selecionar_cenario();
-                game_status = 4;
+                switch(selecionar_cenario()){
+                    case 1:
+                        //em_cidade();
+                        break;
+                    case 2:
+                        //em_floresta();
+                        break;
+                    case 3:
+                        //em_caverna();
+                        break;
+                    default:
+                        System.out.println("Selecao invalida");
+                        break;
+                }
+                game_status = 3;
                 break;
+
+            case 2:
+                
             }
         }
     
