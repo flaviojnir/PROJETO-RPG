@@ -1,7 +1,7 @@
 package essencial;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Random;
+//import java.util.Random;
 import lugares.*;
 
 public class RPG {
@@ -43,6 +43,30 @@ public class RPG {
             return selecao;
         }
 
+    private static void em_cidade(cidade c,jogador[]personagens){
+            System.out.printf("Bem vindo a %s! Aqui voce pode visitar os seguintes estabelecimentos:\n",c.get_nome());
+            System.out.println("1 - Ferreiro (comprar equipamentos)\n2 - Hotel (recuperar vida)\n3 - Taverna (quests)");
+            int escolha = input.nextInt();
+            switch(escolha){
+                case 1:
+                    //menu de itens do ferreiro
+                    break;
+                case 2:
+                    //restora a vida de todos personagens
+                    for(jogador j : personagens){
+                        j.restore_HP();
+                    }
+                    System.out.println("A vida de seu grupo foi restorada!");
+                    break;
+                case 3:
+                    //lista de quests
+                    break;
+                default:
+                    System.out.println("Opcao invalida");
+                    break;
+            }
+    }
+
     public static void main(String[] args) {
         int game_status = 0;
         /*
@@ -59,7 +83,7 @@ public class RPG {
                 criacao_personagem();
                 
                 ArrayList<Object> mapa = new ArrayList<>();
-                cidade viamao = new cidade();
+                cidade viamao = new cidade("Viamao");
                 mapa.add(viamao);
                 caverna cv1 = new caverna();
                 mapa.add(cv1);

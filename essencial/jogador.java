@@ -80,6 +80,10 @@ private String nome;
         HP = new_HP;
     }
 
+    public void restore_HP(){
+        HP = Max_HP;
+    }
+
     public int get_XP(){
         return XP;
     }
