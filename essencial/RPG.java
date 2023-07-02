@@ -2,7 +2,6 @@ package essencial;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
-import estruturas.*;
 import lugares.*;
 
 public class RPG {
