@@ -51,7 +51,7 @@ public class RPG {
     }
 
     public static void main(String[] args) {
-        dado seis = new dado();
+        dado seis = new dado(6);
         int game_status = 0;
         try (Scanner input = new Scanner(System.in)) {
             /*

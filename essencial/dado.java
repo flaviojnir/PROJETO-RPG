@@ -3,14 +3,16 @@ package essencial;
 import java.util.Random;
 
 class dado {
+    int die;
     private Random random;
 
-    public dado() {
+    public dado(int die) {
         random = new Random();
+        this.die = die;
     }
 
     public int lancarDado() {
-        return random.nextInt(6) + 1;
+        return random.nextInt(die) + 1;
     }
 
     public void lancar() {
