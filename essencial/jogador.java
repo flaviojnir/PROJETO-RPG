@@ -67,7 +67,6 @@ class jogador{
         return altura;
     }
 
-
     public int getIdade() {
         return idade;
     }
