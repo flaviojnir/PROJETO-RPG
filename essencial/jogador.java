@@ -5,7 +5,7 @@ class jogador{
     private int idade;
     private float altura;
     private double desl;
-    private String raca;
+    private raca race;
     public int HP, Max_HP;
     public int XP, nivel;
 
@@ -17,32 +17,32 @@ class jogador{
         nivel = 1;
         switch(tipo) {
             case 1:
-                raca = "Anao";
+                race = raca.Anao;
                 desl = 7.5;
                 HP = 12;
                 break;
             case 2:
-                raca = "Elfo";
+                race = raca.Elfo;
                 desl = 5.0;
                 HP = 15;
                 break;
             case 3:
-                raca = "Halfling";
+                race = raca.Halfling;
                 desl = 5.0;
                 HP = 15;
                 break;
             case 4:
-                raca = "Humano";
+                race = raca.Humano;
                 desl = 5.0;
                 HP = 15;
                 break;
             case 5:
-                raca = "Draconato";
+                race = raca.Draconato;
                 desl = 6.0;
                 HP = 17;
                 break;
             case 6:
-                raca = "Gnomo";
+                race = raca.Gnomo;
                 desl = 7.5;
                 HP = 12;
                 break;
@@ -53,8 +53,8 @@ class jogador{
         Max_HP = HP;
     }
 
-    public String getRaca() {
-        return raca;
+    public raca getRaca() {
+        return race;
     }
 
     public String getNome() {

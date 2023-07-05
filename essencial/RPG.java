@@ -31,8 +31,9 @@ public class RPG {
         // cria personagem
         jogador player = new jogador(nome, idade, altura, escolha_raca);
 
-        System.out.printf("Seja Bem-vindo a cidade de Portus Alegris,%s. Voce mede %.2f de altura. \nTem %d anos.\n",
+        System.out.printf("Seja Bem-vindo a cidade de Portus Alegris,%s. Voce mede %.2f de altura. \nTem %d anos ",
                 nome, altura, idade);
+        System.out.println("E sua sua raça eh " + player.getRaca());
         System.out.printf(
                 "Ola, %s. Me chame de Mestre. Voce foi chamado até aqui pois estamos tendo problemas com pragas... Bom, esta é a forma qual chamamos os saqueadores que andam tomando conta da região. \nVoce terá uma equipe, conhecerá ela depois. Vá conhecer o local e depois tome suas decisões.\n",
                 nome);
