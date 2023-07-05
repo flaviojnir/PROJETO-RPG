@@ -1,23 +1,21 @@
 package essencial;
 
 class jogador{
-private String nome;
+    private String nome;
     private int idade;
     private float altura;
     private double desl;
     private String raca;
-    public int HP,Max_HP;
-    public int XP,nivel;
+    public int HP, Max_HP;
+    public int XP, nivel;
 
-
-
-    public jogador(String nome, int idade, float altura,int tipo) {
+    public jogador(String nome, int idade, float altura, int tipo) {
         this.nome = nome;
         this.idade = idade;
         this.altura = altura;
         XP = 0;
-        nivel = 0;
-        switch(tipo){
+        nivel = 1;
+        switch(tipo) {
             case 1:
                 raca = "Anao";
                 desl = 7.5;
@@ -55,7 +53,7 @@ private String nome;
         Max_HP = HP;
     }
 
-    public String getRaca(){
+    public String getRaca() {
         return raca;
     }
 
@@ -67,31 +65,30 @@ private String nome;
         return altura;
     }
 
-
     public int getIdade() {
         return idade;
     }
 
-    public int get_HP(){
+    public int get_HP() {
         return HP;
     }
 
-    public void set_HP(int new_HP){
+    public void set_HP(int new_HP) {
         HP = new_HP;
     }
 
-    public int get_XP(){
+    public int get_XP() {
         return XP;
     }
 
-    public void increase_XP(int acr){
+    public void increase_XP(int acr) {
         XP = XP + acr;
-        if(XP >= 100){ //sobe de lvl 
+        if(XP >= 100) { //sobe de lvl 
             System.out.println("SUBIU DE NIVEL! + 5 HP");
             nivel++;
             Max_HP += 5;
             HP = Max_HP;
-            XP = 0;
+            XP -= 100;
         }
     }
 
