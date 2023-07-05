@@ -9,14 +9,12 @@ class jogador{
     public int HP, Max_HP;
     public int XP, nivel;
 
-
-
     public jogador(String nome, int idade, float altura, int tipo) {
         this.nome = nome;
         this.idade = idade;
         this.altura = altura;
         XP = 0;
-        nivel = 0;
+        nivel = 1;
         switch(tipo) {
             case 1:
                 raca = "Anao";
@@ -90,7 +88,7 @@ class jogador{
             nivel++;
             Max_HP += 5;
             HP = Max_HP;
-            XP = 0;
+            XP -= 100;
         }
     }
 
