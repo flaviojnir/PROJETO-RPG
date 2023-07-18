@@ -1,5 +1,15 @@
 package estruturas;
 
-public class taverna {
+public class taverna implements estrutura_interface {
     
+
+    @Override
+    public String get_tipo(){
+        return "taverna";
+    }
+
+    @Override 
+    public void menu(){
+
+    }
 }

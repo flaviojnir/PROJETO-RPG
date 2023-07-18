@@ -1,7 +1,7 @@
 package estruturas;
 import java.util.HashMap;
 
-public class ferreiro {
+public class ferreiro implements estrutura_interface{
     HashMap<String,Integer>itens;
 
     public ferreiro(int numero_itens){
@@ -11,4 +11,16 @@ public class ferreiro {
     public void add_item(String nome,int atributo){
         itens.put(nome, atributo);
     }
+    
+    @Override
+    public String get_tipo(){
+        return "ferreiro";
+    }
+
+    @Override 
+    public void menu(){
+
+    }
+
+
 }

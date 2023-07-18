@@ -1,12 +1,16 @@
 package essencial;
 
 import java.util.Scanner;
+
+import estruturas.estrutura_interface;
+
 import java.util.ArrayList;
 import java.util.Random;
 import lugares.*;
 
 public class RPG {
     static Scanner input = new Scanner(System.in);
+    static ArrayList<lugares_interface> mapa;
 
     private static void criacao_personagem() { // metodo para criar o personagem do jogador
         String nome;
@@ -44,10 +48,17 @@ public class RPG {
     private static int selecionar_cenario() { // selecionar cidade/caverna/campo aberto
         System.out.println(
                 "Para onde voce quer ir? Cidades podem ser lugares mais tranquilos e com opcoes seguras de compras e vendas. Florestas sao lugares imprevisiveis onde voce pode ser consumido pela noite.");
-        System.out.println("1 - Cidade\n2 - Floresta");
+        System.out.println("1 - Cidade\n2 - Floresta\n3 - Sair e salvar o jogo");
         int selecao = input.nextInt();
         System.out.println("--------------------------");
         return selecao;
+    }
+
+    private static void em_cidade(String nome_cidade,ArrayList<lugares_interface>map){
+        //busca cidade no mapa baseado em seu nome
+        lugares_interface cidade = map.stream().filter(a -> ((lugares_interface) a).getNome().equals(nome_cidade)).findAny().orElse(null);
+
+        System.out.println("A cidade eh " + ((lugares_interface)cidade).getNome());
     }
 
     public static void main(String[] args) {
@@ -67,46 +78,46 @@ public class RPG {
                     case 0:
                         criacao_personagem();
 
-                        ArrayList<Object> mapa = new ArrayList<>();
+                        mapa = new ArrayList<lugares_interface>();
 
                         // florestas
-                        floresta recanto_gauderio = new floresta();
+                        floresta recanto_gauderio = new floresta("recanto_gauderio");
                         mapa.add(recanto_gauderio);
 
-                        floresta estacionamento_rainha = new floresta();
+                        floresta estacionamento_rainha = new floresta("estacionamento_rainha");
                         mapa.add(estacionamento_rainha);
 
-                        floresta recanto_do_autista = new floresta();
-                        mapa.add(recanto_do_autista);
+                        floresta recanto_do_palhaco = new floresta("recanto_do_palhaco");
+                        mapa.add(recanto_do_palhaco);
 
                         // cidades
-                        cidade viamao = new cidade();
+                        cidade viamao = new cidade("viamao");
                         mapa.add(viamao);
 
-                        cidade novos_hamburgos = new cidade();
+                        cidade novos_hamburgos = new cidade("novos_hamburgo");
                         mapa.add(novos_hamburgos);
 
-                        cidade cachoeirinhas = new cidade();
+                        cidade cachoeirinhas = new cidade("cachoeirinhas");
                         mapa.add(cachoeirinhas);
 
                         // cavernas
-                        caverna gruta_do_jairo = new caverna();
+                        caverna gruta_do_jairo = new caverna("gruta_do_jairo");
                         mapa.add(gruta_do_jairo);
 
-                        caverna retiro_do_gera = new caverna();
+                        caverna retiro_do_gera = new caverna("retiro_do_gera");
                         mapa.add(retiro_do_gera);
 
-                        caverna covil_da_rejane = new caverna();
+                        caverna covil_da_rejane = new caverna("covil_da_rejane");
                         mapa.add(covil_da_rejane);
 
                         // campos
-                        campo casa_das_irmas = new campo();
+                        campo casa_das_irmas = new campo("casa_das_irmas");
                         mapa.add(casa_das_irmas);
 
-                        campo purgatorio = new campo();
+                        campo purgatorio = new campo("purgatorio");
                         mapa.add(purgatorio);
 
-                        campo dachau = new campo();
+                        campo dachau = new campo("dachau");
                         mapa.add(dachau);
 
                         game_status = 1;
@@ -119,18 +130,18 @@ public class RPG {
                                 System.out.println(
                                         "Espere, jovem. Voce pode ir a apenas tres lugares neste momento, viamao, novos hamburgos ou cachoeirinhas. A escolha e sua. Eu recomendaria manter distancia de viamao.");
                                 String escolha = input.nextLine();
-                                if (escolha.equals("viamao")) {
+                                if (escolha.equalsIgnoreCase("viamao")) {
                                     System.out.println("Voce tem coragem, nao muita inteligencia. Boa sorte.");
                                 }
-                                if (escolha.equals("novos hamurgos")) {
+                                else if (escolha.equalsIgnoreCase("novos hamurgos")) {
                                     System.out
                                             .println(
                                                     "Siga sua trilha com cuidado, ha pessoas maldosas em todas regioes.");
                                 }
-                                if (escolha.equals("cachoeirinha")) {
+                                else if (escolha.equalsIgnoreCase("cachoeirinha")) {
                                     System.out.println("Perfeito. Va com cuidado em Lembre-se. Confie em Ninguem.");
                                 }
-
+                                em_cidade(escolha,mapa);
                                 break;
                             case 2:
                                 // em_floresta();
