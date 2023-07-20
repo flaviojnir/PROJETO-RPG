@@ -49,8 +49,10 @@ public class ferreiro implements estrutura_interface{
         for (int i = numero_it;i > 0;i--)
             generate_item();
 
-        for (Integer x : itens.keySet())
+        for (Integer x : itens.keySet()){
+            System.out.printf("[%d]",x);
             itens.get(x).tostring();
+        }
     
     }
 

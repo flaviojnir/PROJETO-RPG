@@ -1,12 +1,10 @@
 package essencial;
 
-import java.util.Scanner;
-
-import estruturas.estrutura_interface;
-
+import estruturas.*;
+import lugares.*;
 import java.util.ArrayList;
 import java.util.Random;
-import lugares.*;
+import java.util.Scanner;
 
 public class RPG {
 
@@ -67,6 +65,17 @@ public class RPG {
 
         System.out.println("Onde deseja ir?");
         System.out.println("1 - Ferreiro, 2 - Hotel, 3 - Taverna");
+
+        int escolha = input.nextInt();
+
+        if(escolha == 1){
+            System.out.println("Os seguintes itens estao disponiveis: ");
+            System.out.println("--------------------");
+            ((cidade)cidade).get_Ferreiro().menu(3);
+            System.out.println("--------------------");
+
+            System.out.println("Digite o indice do equipamento que deseja comprar");
+        }
     }
 
     public static void main(String[] args) {
