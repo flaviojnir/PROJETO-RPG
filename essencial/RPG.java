@@ -9,6 +9,11 @@ import java.util.Random;
 import lugares.*;
 
 public class RPG {
+
+    public enum game_status{
+        CRIACAO,SELECAO_CENARIO,LUTA,SAIR
+    }
+
     static Scanner input = new Scanner(System.in);
     static ArrayList<lugares_interface> mapa;
 
@@ -48,7 +53,7 @@ public class RPG {
     private static int selecionar_cenario() { // selecionar cidade/caverna/campo aberto
         System.out.println(
                 "Para onde voce quer ir? Cidades podem ser lugares mais tranquilos e com opcoes seguras de compras e vendas. Florestas sao lugares imprevisiveis onde voce pode ser consumido pela noite.");
-        System.out.println("1 - Cidade\n2 - Floresta\n3 - Sair e salvar o jogo");
+        System.out.println("1 - Cidade\n2 - Floresta\n3 - Sair do jogo");
         int selecao = input.nextInt();
         System.out.println("--------------------------");
         return selecao;
@@ -58,13 +63,15 @@ public class RPG {
         //busca cidade no mapa baseado em seu nome
         lugares_interface cidade = map.stream().filter(a -> ((lugares_interface) a).getNome().equals(nome_cidade)).findAny().orElse(null);
 
-        System.out.println("A cidade eh " + ((lugares_interface)cidade).getNome());
+        System.out.println("Bem vindo a " + ((lugares_interface)cidade).getNome());
+
+        System.out.println("Onde deseja ir?");
+        System.out.println("1 - Ferreiro, 2 - Hotel, 3 - Taverna");
     }
 
     public static void main(String[] args) {
-        dado seis = new dado(6);
-        int game_status = 0;
-        try (Scanner input = new Scanner(System.in)) {
+            game_status status = game_status.CRIACAO;
+        
             /*
              * Game status:
              * 0 - criacao de personagem
@@ -73,9 +80,9 @@ public class RPG {
              * 3 - sair do jogo (salva progresso)
              */
 
-            while (game_status != 3) {
-                switch (game_status) {
-                    case 0:
+            while (status != game_status.SAIR) {
+                switch (status) {
+                    case CRIACAO:
                         criacao_personagem();
 
                         mapa = new ArrayList<lugares_interface>();
@@ -120,29 +127,39 @@ public class RPG {
                         campo dachau = new campo("dachau");
                         mapa.add(dachau);
 
-                        game_status = 1;
+                        status = game_status.SELECAO_CENARIO;
                         break;
 
-                    case 1:
+                    case SELECAO_CENARIO:
                         switch (selecionar_cenario()) {
                             case 1:
-                                // em_cidade();
+                                // em cidade
+                                boolean nome_valido = false;
+                                String escolha = "";
                                 System.out.println(
                                         "Espere, jovem. Voce pode ir a apenas tres lugares neste momento, viamao, novos hamburgos ou cachoeirinhas. A escolha e sua. Eu recomendaria manter distancia de viamao.");
-                                String escolha = input.nextLine();
-                                if (escolha.equalsIgnoreCase("viamao")) {
-                                    System.out.println("Voce tem coragem, nao muita inteligencia. Boa sorte.");
-                                }
-                                else if (escolha.equalsIgnoreCase("novos hamurgos")) {
-                                    System.out
-                                            .println(
-                                                    "Siga sua trilha com cuidado, ha pessoas maldosas em todas regioes.");
-                                }
-                                else if (escolha.equalsIgnoreCase("cachoeirinha")) {
-                                    System.out.println("Perfeito. Va com cuidado em Lembre-se. Confie em Ninguem.");
-                                }
-                                em_cidade(escolha,mapa);
-                                break;
+                                while(!nome_valido){
+                                    escolha = input.nextLine();
+                                    if (escolha.equalsIgnoreCase("viamao")) {
+                                        System.out.println("Voce tem coragem, nao muita inteligencia. Boa sorte.");
+                                        nome_valido = true;
+                                    }
+                                    else if (escolha.equalsIgnoreCase("novos hamurgos")) {
+                                        System.out
+                                                .println(
+                                                        "Siga sua trilha com cuidado, ha pessoas maldosas em todas regioes.");
+                                        nome_valido = true;
+                                    }
+                                    else if (escolha.equalsIgnoreCase("cachoeirinha")) {
+                                        System.out.println("Perfeito. Va com cuidado em Lembre-se. Confie em Ninguem.");
+                                        nome_valido = true;
+                                    }
+                                    else{
+                                        System.out.println("Nome invalido,tente novamente");
+                                    }
+                            }
+                             em_cidade(escolha,mapa);
+                             break;
                             case 2:
                                 // em_floresta();
                                 break;
@@ -150,13 +167,13 @@ public class RPG {
                                 System.out.println("Selecao invalida");
                                 break;
                         }
-                        game_status = 3;
+                        status = game_status.SAIR;
                         break;
 
-                    case 2:
+                    case LUTA:
 
                 }
-            }
+            
 
         }
     }

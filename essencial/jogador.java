@@ -3,6 +3,11 @@ package essencial;
 import java.util.ArrayList;
 
 class jogador{
+
+    public enum raca {
+        Anao,Elfo,Halfling,Humano,Draconato,Gnomo;   
+    }
+    
     private String nome;
     private int idade;
     private float altura;
