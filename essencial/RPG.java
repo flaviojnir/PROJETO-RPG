@@ -139,15 +139,14 @@ public class RPG {
                                 System.out.println(
                                         "Espere, jovem. Voce pode ir a apenas tres lugares neste momento, viamao, novos hamburgos ou cachoeirinhas. A escolha e sua. Eu recomendaria manter distancia de viamao.");
                                 while(!nome_valido){
+                                    input.nextLine();
                                     escolha = input.nextLine();
                                     if (escolha.equalsIgnoreCase("viamao")) {
                                         System.out.println("Voce tem coragem, nao muita inteligencia. Boa sorte.");
                                         nome_valido = true;
                                     }
                                     else if (escolha.equalsIgnoreCase("novos hamurgos")) {
-                                        System.out
-                                                .println(
-                                                        "Siga sua trilha com cuidado, ha pessoas maldosas em todas regioes.");
+                                        System.out.println("Siga sua trilha com cuidado, ha pessoas maldosas em todas regioes.");
                                         nome_valido = true;
                                     }
                                     else if (escolha.equalsIgnoreCase("cachoeirinha")) {
