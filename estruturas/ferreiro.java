@@ -9,17 +9,19 @@ import java.io.FileNotFoundException;
 
 public class ferreiro implements estrutura_interface{
     HashMap<Integer,equipamento>itens;
+    File f;
+    Random sd;
 
     public ferreiro(int numero_itens){
         itens = new HashMap<Integer,equipamento>(numero_itens);
+        f = new File("data\\equipamentos.txt");
+        sd = new Random();
     }
 
     public void generate_item(){
-        Random sd = new Random();
         int indice = sd.nextInt(3) + 1;
 
         try{
-            File f = new File("data\\equipamentos.txt");
             Scanner scan = new Scanner(f);
             int aux = indice;
             
