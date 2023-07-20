@@ -1,5 +1,7 @@
 package essencial;
 
+import java.util.ArrayList;
+
 class jogador{
     private String nome;
     private int idade;
@@ -8,11 +10,13 @@ class jogador{
     private raca race;
     public int HP, Max_HP;
     public int XP, nivel;
+    private ArrayList<equipamento> inventario;
 
     public jogador(String nome, int idade, float altura, int tipo) {
         this.nome = nome;
         this.idade = idade;
         this.altura = altura;
+        inventario = new ArrayList<equipamento>();
         XP = 0;
         nivel = 1;
         switch(tipo) {
@@ -53,6 +57,15 @@ class jogador{
         Max_HP = HP;
     }
 
+    public void add_equip(equipamento e){
+        inventario.add(e);
+    }
+
+    public ArrayList<equipamento> get_inventario(){
+        return inventario;
+    }
+
+
     public raca getRaca() {
         return race;
     }
@@ -80,6 +93,8 @@ class jogador{
     public int get_XP() {
         return XP;
     }
+
+    
 
     public void increase_XP(int acr) {
         XP = XP + acr;

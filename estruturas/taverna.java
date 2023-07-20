@@ -9,7 +9,7 @@ public class taverna implements estrutura_interface {
     }
 
     @Override 
-    public void menu(){
+    public void menu(int numero_itens){
 
     }
 }

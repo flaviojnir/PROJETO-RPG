@@ -1,1 +1,4 @@
-NOME TIPO DANO/DEF
+INDICE;NOME;TIPO;DANO/DEF
+1;Espada de madeira;Espada;3;
+2;Faca cega;Faca;2;
+3;Cota de malha;Armadura;4;
