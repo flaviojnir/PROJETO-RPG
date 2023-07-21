@@ -1,4 +1,6 @@
-INDICE;NOME;TIPO;DANO/DEF
+INDICE;NOME;TIPO;DANO/DEF;
 1;Espada de madeira;Espada;3;
 2;Faca cega;Faca;2;
 3;Cota de malha;Armadura;4;
+4;Capacete de ferro;Armadura;2;
+5;Machado de madeira;Machado;3;

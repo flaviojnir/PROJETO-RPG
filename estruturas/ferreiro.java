@@ -19,7 +19,7 @@ public class ferreiro implements estrutura_interface{
     }
 
     public void generate_item(){
-        int indice = sd.nextInt(3) + 1;
+        int indice = sd.nextInt(5) + 1;
 
         try{
             Scanner scan = new Scanner(f);
@@ -54,6 +54,10 @@ public class ferreiro implements estrutura_interface{
             itens.get(x).tostring();
         }
     
+    }
+
+    public equipamento get_Equipamento(int index){
+        return itens.get(index);
     }
 
     /*public static void main (String[]args){

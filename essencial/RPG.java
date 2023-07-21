@@ -14,6 +14,7 @@ public class RPG {
 
     static Scanner input = new Scanner(System.in);
     static ArrayList<lugares_interface> mapa;
+    static jogador player;
 
     private static void criacao_personagem() { // metodo para criar o personagem do jogador
         String nome;
@@ -36,7 +37,7 @@ public class RPG {
         idade = input.nextInt();
 
         // cria personagem
-        jogador player = new jogador(nome, idade, altura, escolha_raca);
+        player = new jogador(nome, idade, altura, escolha_raca);
 
         System.out.printf("Seja Bem-vindo a cidade de Portus Alegris,%s. Voce mede %.2f de altura. \nTem %d anos ",
                 nome, altura, idade);
@@ -75,6 +76,11 @@ public class RPG {
             System.out.println("--------------------");
 
             System.out.println("Digite o indice do equipamento que deseja comprar");
+            int indice = input.nextInt();
+            equipamento e = ((cidade)cidade).get_Ferreiro().get_Equipamento(indice);
+            player.add_equip(e);
+            System.out.println("O seguinte item foi adicionado com sucesso!");
+            e.tostring();
         }
     }
 
