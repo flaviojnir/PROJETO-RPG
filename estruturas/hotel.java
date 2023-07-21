@@ -10,7 +10,7 @@ public class hotel implements estrutura_interface {
     }
 
     @Override 
-    public void menu(int numero_itens){
+    public void menu(){
 
     }
 }

@@ -38,6 +38,11 @@ public class ferreiro implements estrutura_interface{
             System.out.println("erro com arquivo txt");
         }
     }
+
+    public void generate_all_items(int numero_it){
+        for (int i = numero_it;i > 0;i--)
+            generate_item();
+    }
     
     @Override
     public String get_tipo(){
@@ -45,10 +50,7 @@ public class ferreiro implements estrutura_interface{
     }
 
     @Override 
-    public void menu(int numero_it){
-        for (int i = numero_it;i > 0;i--)
-            generate_item();
-
+    public void menu(){
         for (Integer x : itens.keySet()){
             System.out.printf("[%d]",x);
             itens.get(x).tostring();
@@ -58,6 +60,10 @@ public class ferreiro implements estrutura_interface{
 
     public equipamento get_Equipamento(int index){
         return itens.get(index);
+    }
+
+    public void remove_Equipamento(int index){
+        itens.remove(index);
     }
 
     /*public static void main (String[]args){

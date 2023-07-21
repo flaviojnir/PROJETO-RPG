@@ -70,17 +70,28 @@ public class RPG {
         int escolha = input.nextInt();
 
         if(escolha == 1){
-            System.out.println("Os seguintes itens estao disponiveis: ");
-            System.out.println("--------------------");
-            ((cidade)cidade).get_Ferreiro().menu(3);
-            System.out.println("--------------------");
+            ferreiro fer = ((cidade)cidade).get_Ferreiro();
+            fer.generate_all_items(3);
+                while(true){
+                    System.out.println("Os seguintes itens estao disponiveis: ");
+                    System.out.println("--------------------");
+                    fer.menu();
+                    System.out.println("--------------------");
 
-            System.out.println("Digite o indice do equipamento que deseja comprar");
-            int indice = input.nextInt();
-            equipamento e = ((cidade)cidade).get_Ferreiro().get_Equipamento(indice);
-            player.add_equip(e);
-            System.out.println("O seguinte item foi adicionado com sucesso!");
-            e.tostring();
+                    System.out.println("Digite o indice do equipamento que deseja comprar,0 p/ sair");
+                    int indice = input.nextInt();
+                    if(indice == 0) break;
+                    equipamento e = fer.get_Equipamento(indice);
+                    player.add_equip(e);
+                    fer.remove_Equipamento(indice);
+                    System.out.println("O seguinte item foi adicionado com sucesso!");
+                    e.tostring();
+                    System.out.println("Continuar comprando? S/N");
+                    input.nextLine();
+                    String c = input.nextLine();
+                    if(c.equalsIgnoreCase("s"))   continue;
+                        else break;
+            }
         }
     }
 
