@@ -5,14 +5,15 @@ import lugares.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 public class RPG {
 
     public enum game_status{
-        CRIACAO,SELECAO_CENARIO,LUTA,SAIR
+        CRIACAO,SELECAO_CENARIO,LUTA,SAVE,SAIR
     }
 
     static Scanner input = new Scanner(System.in);
@@ -72,6 +73,15 @@ public class RPG {
         }
         } catch(FileNotFoundException e){System.out.println("Erro com arquivo txt");}
         return npcs;
+    }
+
+    private static void save_game(){
+        try{
+        File f = new File("data\\save.txt");
+        PrintWriter pw = new PrintWriter(f,"UTF-8");
+        pw.write(player.ToString().toString()); 
+        pw.close();
+        } catch(FileNotFoundException | UnsupportedEncodingException u){System.out.println("Erro com arquivo txt");}
     }
 
     private static int selecionar_cenario() { // selecionar cidade/caverna/campo aberto
@@ -220,17 +230,29 @@ public class RPG {
                             }
                              em_cidade(escolha,mapa);
                              break;
+                             
                             case 2:
                                 // em_floresta();
                                 break;
+
+                            case 3:
+                                status = game_status.SAVE;
+                                break;
+
                             default:
                                 System.out.println("Selecao invalida");
                                 break;
                         }
-                        status = game_status.SAIR;
+                        status = game_status.SAVE;
                         break;
 
                     case LUTA:
+
+
+                    case SAVE:
+                        save_game();
+                        status = game_status.SAIR;
+                        break;
 
                 }
             
