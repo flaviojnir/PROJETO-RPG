@@ -5,6 +5,9 @@ import lugares.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class RPG {
 
@@ -15,11 +18,13 @@ public class RPG {
     static Scanner input = new Scanner(System.in);
     static ArrayList<lugares_interface> mapa;
     static jogador player;
+    static ArrayList<jogador> companions;
 
     private static void criacao_personagem() { // metodo para criar o personagem do jogador
         String nome;
         float altura;
         int idade;
+        companions = new ArrayList<jogador>();
 
         System.out.println(
                 "Bem-vindo a sua nova aventura, aventureiro. Conclua sua inscricao para que possamos comecar a aventura");
@@ -47,6 +52,26 @@ public class RPG {
                 nome);
         System.out.println("--------------------------");
 
+    }
+
+    private static ArrayList<jogador> gen_npcs(int num){
+        ArrayList<jogador>npcs = new ArrayList<jogador>();
+        try{
+        File f = new File("data\\NPC.txt");
+        Random sd = new Random();
+        for(int i = 0;i < num;i++){
+            Scanner sc = new Scanner(f);
+            int random = sd.nextInt(5)+1;
+            for(int j = 0;j < random;j++){
+                sc.nextLine();
+            }
+            String[] linha = sc.nextLine().split(";");
+            jogador n = new jogador(linha[0], 20, 1.70f, 4);
+            npcs.add(n);
+            sc.close();
+        }
+        } catch(FileNotFoundException e){System.out.println("Erro com arquivo txt");}
+        return npcs;
     }
 
     private static int selecionar_cenario() { // selecionar cidade/caverna/campo aberto
@@ -91,6 +116,16 @@ public class RPG {
                     String c = input.nextLine();
                     if(c.equalsIgnoreCase("s"))   continue;
                         else break;
+            }
+        }
+        //--implementar save--
+        else if(escolha == 3){
+            if(companions.size() == 0){
+                System.out.println("Voce encontrou aventureiros que querem se juntar a vc.");
+                companions = gen_npcs(3);
+                for(jogador j : companions){
+                    System.out.println(j.ToString().toString());
+                }
             }
         }
     }

@@ -16,6 +16,7 @@ class jogador{
     public int HP, Max_HP;
     public int XP, nivel;
     private ArrayList<equipamento> inventario;
+    
 
     public jogador(String nome, int idade, float altura, int tipo) {
         this.nome = nome;

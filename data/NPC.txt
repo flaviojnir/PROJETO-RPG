@@ -1,1 +1,6 @@
-NOME HP DANO 
+NOME;HP;DANO 
+Jao;12;3;
+Cleber;15;2;
+Pedro;15;2;
+Maria;14;3;
+Pedra;13;4;
